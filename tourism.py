@@ -32,7 +32,6 @@ def main(page: ft.Page):
         if interests and budget and duration and previous_experiences:
             recommendations = generate_recommendations(
                 interests, budget, duration, previous_experiences)
-            
 
         else:
             recommendations = "PLEASE ENTER THE NECESSARY VALUES"
@@ -124,7 +123,7 @@ def main(page: ft.Page):
                 duration_input,
                 experiences_input,
                 submit_button,
-                #recommendations_output,
+                recommendations_output,
             ],
             alignment=ft.MainAxisAlignment.CENTER,
             horizontal_alignment=ft.CrossAxisAlignment.CENTER,

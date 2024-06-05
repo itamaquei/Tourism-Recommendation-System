@@ -36,33 +36,33 @@ tourist_attractions = {
 
 
 def generate_recommendations(interests, budget, duration, previous_experiences):
-    recommendations = []
-    for place, details in tourism_places.items():
-        recommendations.append(f"{place}: {', '.join(details)}")
-    return "\n\n".join(recommendations)
+    # Filter places based on user interests
+    filtered_places = {name: details for name, details in tourism_places.items() if any(interest.lower() in details[0].lower() for interest in interests)}
 
+    # Filter attractions based on user interests
+    filtered_attractions = {name: description for name, description in tourist_attractions.items() if any(interest.lower() in description.lower() for interest in interests)}
 
-def generate_recommendations2(interests=0, budget=0, duration=0, previous_experiences=0):
-    # Get a list of random key-value pairs as strings
-    num_pairs = 1
-    if num_pairs >= 2:
-        random_pairs = random.sample(
-            list(tourist_attractions.items()), num_pairs)
-        random_pairs_str = ""
-        for pair in random_pairs:
-            random_pairs_str += f"{"____" *
-                                   10}\n-{pair[0]}:\n\t{pair[1]}\n\n"
-        # Output: "cherry:\n\t\t8\napple:\n\t\t5" or some other combination
-        # print(random_pairs_str.strip())
-        recommendations = random_pairs_str
-    else:
-        random_pair = random.choice(list(tourist_attractions .items()))
-        recommendations = f"-{random_pair[0]}:\n\t{random_pair[1]}"
+    # Score and rank recommendations (you can customize this logic)
+    # ...
 
-    recommendations = f"Based on your interests ({interests}), budget ({budget}), duration ({
-        duration} days, and previous experiences ({previous_experiences}), we recommend: \n\n{recommendations}"
-    print(recommendations)
-    return recommendations
+    # Return the top recommendations
+    return filtered_places, filtered_attractions
+
+# Example usage:
+user_interests = ["history", "nature"]
+user_budget = 1000
+user_duration = 3
+user_experiences = ["visited Oshun Shrine"]
+recommendations = generate_recommendations(user_interests, user_budget, user_duration, user_experiences)
+
+print("Recommended places:")
+for name, details in recommendations[0].items():
+    print(f"{name}: {details[0]}")
+
+print("\nRecommended attractions:")
+for name, description in recommendations[1].items():
+    print(f"{name}: {description}")
+
 
 
 # generate_recommendations2()
