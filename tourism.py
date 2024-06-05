@@ -1,9 +1,9 @@
 from flet import *
 
 # Importing the recommendation function
-from recommend import generate_recommendations2
+from recommend import generate_recommendations
 
-generate_recommendations = generate_recommendations2
+generate_recommendations = generate_recommendations
 
 
 def main(page: Page):
